@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { Quicksand } from "next/font/google";
 import { useEffect, useState, createContext } from "react";
 import { useRouter } from 'next/router';
+import Head from "next/head";
 
 const quicksand = Quicksand({ variable: "--font-quicksand", subsets: ["latin"] });
 export const SessionContext = createContext(null);
@@ -70,6 +71,9 @@ export default function App({ Component, pageProps }) {
   return (
     <SessionContext.Provider value={session}>
       <main className={`${quicksand.className} relative w-full`}>
+        <Head>
+          <title>IdeaHub - Inovație și Creativitate</title>
+        </Head>
         <Component {...pageProps} session={session} />
         <StickyNav scrolled={scrolled} links={links} />
       </main>
